@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:," />
+  <title>Pacman</title>
+ <link rel="stylesheet" href="./pacman.css" />
+
+  <!-- Import map obligatorio con versión fija para resolver "three" y addons en el navegador -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Contenedor del canvas de Three.js -->
+  <div id="game"></div>
+
+  <!-- HUD superior sobre el canvas -->
+  <header id="hud" class="oculto">
+    <div class="hud-item">Puntos: <span id="puntos">0</span></div>
+    <div class="hud-item">Vidas: <span id="vidas">3</span></div>
+    <div class="hud-item">Frutas: <span id="frutas-restantes">0</span></div>
+    <div class="hud-item">Power-Up: <span id="estado-powerup">Inactivo</span></div>
+    <button id="btn-pausa" type="button">Pausa (P)</button>
+  </header>
+
+  <!-- Pantalla de inicio -->
+  <section id="pantalla-inicio" class="overlay visible">
+    <div class="card">
+      <h1>Laberinto 3D</h1>
+      <p>Recoge todas las frutas y usa a <strong>Reisen</strong> para volver vulnerables a los <strong>Pochita</strong>.</p>
+      <div class="controles">
+        <p><strong>Mover:</strong> WASD o Flechas</p>
+        <p><strong>Pausar / Reanudar:</strong> P o Esc</p>
+      </div>
+      <button id="btn-jugar" type="button">Iniciar Juego</button>
+    </div>
+  </section>
+
+  <!-- Pantalla de pausa -->
+  <section id="pantalla-pausa" class="overlay oculto">
+    <div class="card">
+      <h2>Juego en Pausa</h2>
+      <p>Presiona P o haz clic para continuar.</p>
+      <button id="btn-reanudar" type="button">Reanudar</button>
+      <button id="btn-reiniciar-pausa" type="button">Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- Pantalla final (Victoria / Game Over) -->
+  <section id="pantalla-final" class="overlay oculto">
+    <div class="card">
+      <h2 id="titulo-final">Fin del Juego</h2>
+      <p id="mensaje">Puntaje final: 0</p>
+      <button id="btn-reiniciar" type="button">Jugar de Nuevo</button>
+    </div>
+  </section>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
